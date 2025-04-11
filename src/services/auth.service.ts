@@ -28,7 +28,7 @@ export interface LoginCredentials {
 export interface RegisterData {
   email: string;
   password: string;
-  name: string;
+  full_name: string;
   username: string;
 }
 
@@ -58,7 +58,7 @@ export interface AuthResponse {
   user: {
     id: string | number;
     email: string;
-    name?: string;
+    full_name?: string;
     username?: string;
     is_active?: boolean;
     age?: number | null;
@@ -170,8 +170,10 @@ class AuthService {
   async register(data: RegisterData): Promise<AuthResponse> {
     try {
       const response = await apiAxios.post("/auth/register", data);
+      console.log("Kết quả đăng ký:", response.data);
       return response.data;
     } catch (error: any) {
+      console.log("Lỗi đăng ký:", error);
       console.error("Lỗi đăng ký:", error.message);
       if (error.response) {
         console.error("Dữ liệu phản hồi:", error.response.data);
