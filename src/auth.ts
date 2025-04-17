@@ -2,7 +2,6 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { authService, calculateExpiryTime } from "./services/auth.service";
 import { JWT } from "next-auth/jwt";
-import { botLogger } from "../utils/bot-logger";
 
 /**
  * Chuyển đổi chuỗi thời gian sang milliseconds
@@ -177,8 +176,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   callbacks: {
     async jwt({ token, user, trigger, session }) {
       if (trigger === "update") {
-        console.log("newSession jwt", session);
-        botLogger.info("newSession jwt", session);
         token.metadata = {
           ...session.user.metadata,
         };
