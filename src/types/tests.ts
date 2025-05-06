@@ -22,7 +22,6 @@ export interface TestMetadata {
   id: string;
   title: string;
   description: string;
-  duration: number;
   totalQuestions: number;
   levels: string[];
   questionTypes: string[];

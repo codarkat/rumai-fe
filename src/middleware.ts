@@ -22,23 +22,6 @@ export default auth((req) => {
 
   const isAuthenticated = !!req.auth;
 
-  // Kiểm tra xem russian_level có tồn tại không
-  const russianLevel = req.auth?.user?.metadata?.russian_level;
-
-  const isProficiencyTestPath = path === "/tests/proficiency-test";
-
-  // Nếu người dùng đã đăng nhập, russian_level là null, và không ở trang kiểm tra trình độ
-  // thì chuyển hướng đến trang kiểm tra trình độ
-  if (
-    isAuthenticated &&
-    (russianLevel === null ||
-      russianLevel === "" ||
-      russianLevel === undefined) &&
-    !isProficiencyTestPath
-  ) {
-    return NextResponse.redirect(new URL("/tests/proficiency-test", nextUrl));
-  }
-
   if (!isAuthenticated && isProtectedPath) {
     return NextResponse.redirect(new URL("/auth/login", nextUrl));
   }
