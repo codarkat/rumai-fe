@@ -36,8 +36,6 @@ export interface ProficiencyTestState {
   textInputs: Record<number, string>;
   testCompleted: boolean;
   score: number;
-  timeLeft: number;
-  timeStarted: number; // Unix timestamp when the test started
   correctAnswers: number[];
   incorrectAnswers: number[];
   russianLevel: string;

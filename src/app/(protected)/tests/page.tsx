@@ -8,7 +8,6 @@ import {
   CircleHelp,
   Book,
   Brain,
-  Timer,
   BrainCircuit,
   ArrowRight,
   Sigma,
@@ -23,7 +22,6 @@ const tests = [
     description:
       "Đánh giá mức độ thành thạo tiếng Nga của bạn với nhiều cấp độ khác nhau",
     icon: <FileCheck className="text-emerald-500" size={28} />,
-    time: "20-30 phút",
     disabled: false,
   },
   {
@@ -32,7 +30,6 @@ const tests = [
     description:
       "Kiểm tra lượng từ vựng tiếng Nga của bạn với các chủ đề khác nhau",
     icon: <Book className="text-indigo-500" size={28} />,
-    time: "15-20 phút",
     disabled: false,
   },
   {
@@ -41,7 +38,6 @@ const tests = [
     description:
       "Đánh giá kiến thức ngữ pháp tiếng Nga của bạn qua các bài tập thực hành",
     icon: <Sigma className="text-blue-500" size={28} />,
-    time: "25-30 phút",
     disabled: true,
   },
   {
@@ -50,7 +46,6 @@ const tests = [
     description:
       "Kiểm tra khả năng nghe và hiểu tiếng Nga qua các đoạn hội thoại thực tế",
     icon: <Brain className="text-purple-500" size={28} />,
-    time: "15-20 phút",
     disabled: true,
   },
   {
@@ -59,7 +54,6 @@ const tests = [
     description:
       "Đánh giá khả năng giao tiếp tiếng Nga của bạn qua các tình huống thực tế",
     icon: <BrainCircuit className="text-amber-500" size={28} />,
-    time: "20-25 phút",
     disabled: true,
   },
   {
@@ -68,7 +62,6 @@ const tests = [
     description:
       "Mô phỏng kỳ thi TORFL (Tiếng Nga như một Ngoại ngữ) chính thức",
     icon: <Award className="text-rose-500" size={28} />,
-    time: "60 phút",
     disabled: true,
   },
 ];
@@ -123,10 +116,6 @@ export default function TestsPage() {
                         </span>
                       )}
                     </h3>
-                    <div className="flex items-center text-sm text-gray-500 mb-2">
-                      <Timer size={14} className="mr-1" />
-                      <span>{test.time}</span>
-                    </div>
                   </div>
                 </div>
                 <p className="text-gray-600 mb-4 text-sm flex-grow">

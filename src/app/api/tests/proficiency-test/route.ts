@@ -18,7 +18,6 @@ export async function GET() {
       title: "Bài Kiểm Tra Trình Độ Tiếng Nga",
       description:
         "Bài kiểm tra này sẽ giúp xác định trình độ tiếng Nga của bạn từ A1 đến C2",
-      duration: 40, // thời gian làm bài (phút)
       totalQuestions: questions.length,
       levels: ["A1", "A2", "B1", "B2", "C1", "C2"],
       questionTypes: ["single", "multiple", "text"],

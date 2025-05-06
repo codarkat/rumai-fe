@@ -14,8 +14,6 @@ export const initTestState = (
     textInputs: {},
     testCompleted: false,
     score: 0,
-    timeLeft: 40 * 60, // Default 40 minutes in seconds
-    timeStarted: Date.now(),
     correctAnswers: [],
     incorrectAnswers: [],
     russianLevel: "",
@@ -77,27 +75,8 @@ export const clearTestState = (): void => {
   }
 };
 
-// Calculate remaining time based on timeStarted and duration
-export const calculateRemainingTime = (
-  timeStarted: number,
-  totalDuration: number
-): number => {
-  const elapsedSeconds = Math.floor((Date.now() - timeStarted) / 1000);
-  const remainingSeconds = Math.max(0, totalDuration - elapsedSeconds);
-  return remainingSeconds;
-};
-
-// Check if test is still valid (not expired)
+// Check if test is still valid
 export const isTestValid = (state: ProficiencyTestState): boolean => {
-  if (state.testCompleted) return true;
-
-  const totalDurationSeconds = state.testMetadata?.duration
-    ? state.testMetadata.duration * 60
-    : 40 * 60;
-  const remainingTime = calculateRemainingTime(
-    state.timeStarted,
-    totalDurationSeconds
-  );
-
-  return remainingTime > 0;
+  // Bài kiểm tra luôn hợp lệ khi không còn giới hạn thời gian
+  return true;
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Clock, CheckCircle, BadgeX, PackageCheck } from "lucide-react";
+import { CheckCircle, BadgeX, PackageCheck } from "lucide-react";
 import { Question } from "@/types/tests";
 import { Separator } from "@/components/ui/separator";
 import { Card } from "@/components/ui/card";
@@ -12,7 +12,6 @@ interface QuestionReviewPanelProps {
   onSelectQuestion: (index: number) => void;
   onSubmitTest: () => void;
   onShowSkipDialog: () => void;
-  timeLeft: number;
 }
 
 export function QuestionReviewPanel({
@@ -22,27 +21,10 @@ export function QuestionReviewPanel({
   onSelectQuestion,
   onSubmitTest,
   onShowSkipDialog,
-  timeLeft,
 }: QuestionReviewPanelProps) {
   const answeredCount = Object.keys(answers).length;
   const totalQuestions = questions.length;
   const progress = Math.round((answeredCount / totalQuestions) * 100);
-
-  // Format time từ giây sang MM:SS
-  const formatTime = (timeInSeconds: number) => {
-    const minutes = Math.floor(timeInSeconds / 60);
-    const seconds = timeInSeconds % 60;
-    return `${minutes.toString().padStart(2, "0")}:${seconds
-      .toString()
-      .padStart(2, "0")}`;
-  };
-
-  // Tính toán thời gian còn lại để hiển thị màu phù hợp
-  const getTimeColor = () => {
-    if (timeLeft <= 300) return "text-red-600 bg-red-50"; // Dưới 5 phút
-    if (timeLeft <= 600) return "text-orange-600 bg-orange-50"; // Dưới 10 phút
-    return "text-blue-600 bg-blue-50"; // Thời gian bình thường
-  };
 
   // Tạo các nhóm câu hỏi, mỗi nhóm 5 câu
   const questionGroups = [];
@@ -52,7 +34,6 @@ export function QuestionReviewPanel({
 
   return (
     <Card className="border border-blue-100 p-6 overflow-y-auto shadow-sm">
-      {/* Bộ đếm thời gian */}
       <div className="flex items-center justify-between">
         <div className="flex flex-col items-start justify-between">
           <h3 className="text-lg font-semibold bg-gradient-to-r from-blue-600 to-sky-400 bg-clip-text text-transparent">
@@ -62,11 +43,6 @@ export function QuestionReviewPanel({
             <PackageCheck className="h-4 w-4" />
             {answeredCount}/{totalQuestions} câu
           </div>
-        </div>
-        <div
-          className={`py-2 px-3 rounded-lg flex items-center justify-center gap-2 ${getTimeColor()}`}
-        >
-          <div className="text-xl font-bold">{formatTime(timeLeft)}</div>
         </div>
       </div>
 

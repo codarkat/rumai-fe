@@ -29,7 +29,6 @@ import { QuestionReviewPanel } from "@/components/tests/QuestionReviewPanel";
 import { QuestionRenderer } from "@/components/tests/QuestionRenderer";
 import { TestResultSummary } from "@/components/tests/TestResultSummary";
 import { TestResultDetails } from "@/components/tests/TestResultDetails";
-import { TimeDisplay } from "@/components/tests/TimeDisplay";
 import { Question, TestMetadata } from "@/types/tests";
 
 // Import localStorage utilities
@@ -38,7 +37,6 @@ import {
   initTestState,
   updateTestState,
   clearTestState,
-  calculateRemainingTime,
 } from "@/utils/test-storage";
 
 export default function ProficiencyTestPage() {
@@ -50,7 +48,6 @@ export default function ProficiencyTestPage() {
   const [answers, setAnswers] = useState<Record<number, string | string[]>>({});
   const [textInputs, setTextInputs] = useState<Record<number, string>>({});
   const [isLoading, setIsLoading] = useState(true);
-  const [timeLeft, setTimeLeft] = useState(40 * 60); // Default: 40 minutes in seconds
   const [showSkipDialog, setShowSkipDialog] = useState(false);
 
   // Check for existing test session on component mount
@@ -71,24 +68,7 @@ export default function ProficiencyTestPage() {
       setCurrentQuestionIndex(existingTest.currentQuestionIndex);
       setAnswers(existingTest.answers);
       setTextInputs(existingTest.textInputs);
-
-      // Calculate remaining time based on when the test started
-      const totalDurationSeconds = existingTest.testMetadata?.duration
-        ? existingTest.testMetadata.duration * 60
-        : 40 * 60;
-
-      const remainingTime = calculateRemainingTime(
-        existingTest.timeStarted,
-        totalDurationSeconds
-      );
-
-      if (remainingTime <= 0) {
-        // Time's up - automatically submit the test
-        handleSubmitTest();
-      } else {
-        setTimeLeft(remainingTime);
-        setIsLoading(false);
-      }
+      setIsLoading(false);
     } else {
       // No existing test, fetch questions
       fetchQuestions();
@@ -105,16 +85,8 @@ export default function ProficiencyTestPage() {
       currentQuestionIndex,
       answers,
       textInputs,
-      timeLeft,
     });
-  }, [
-    questions,
-    testMetadata,
-    currentQuestionIndex,
-    answers,
-    textInputs,
-    timeLeft,
-  ]);
+  }, [questions, testMetadata, currentQuestionIndex, answers, textInputs]);
 
   // Fetch test questions
   const fetchQuestions = async () => {
@@ -138,18 +110,12 @@ export default function ProficiencyTestPage() {
       if (data.metadata) {
         metadata = data.metadata;
         setTestMetadata(metadata);
-        // Set time based on metadata
-        if (data.metadata.duration) {
-          setTimeLeft(data.metadata.duration * 60); // Convert minutes to seconds
-        }
       }
 
       // Initialize test state in localStorage
       initTestState({
         questions: typedQuestions,
         testMetadata: metadata,
-        timeStarted: Date.now(),
-        timeLeft: metadata?.duration ? metadata.duration * 60 : 40 * 60,
       });
 
       setIsLoading(false);
@@ -169,7 +135,6 @@ export default function ProficiencyTestPage() {
         // Initialize test state in localStorage with fallback data
         initTestState({
           questions: typedData,
-          timeStarted: Date.now(),
         });
 
         setIsLoading(false);
@@ -178,24 +143,6 @@ export default function ProficiencyTestPage() {
       }
     }
   };
-
-  // Timer countdown
-  useEffect(() => {
-    if (isLoading) return;
-
-    const timer = setInterval(() => {
-      setTimeLeft((prevTime) => {
-        if (prevTime <= 1) {
-          clearInterval(timer);
-          handleSubmitTest();
-          return 0;
-        }
-        return prevTime - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [isLoading]);
 
   const handleAnswerSelect = (answer: string) => {
     const currentQuestion = questions[currentQuestionIndex];
@@ -315,8 +262,8 @@ export default function ProficiencyTestPage() {
       russianLevel = "A1";
     }
 
-    // Update test state in localStorage
-    updateTestState({
+    // Update test state with results
+    const updatedState = updateTestState({
       testCompleted: true,
       score: finalScore,
       correctAnswers: correct,
@@ -385,7 +332,7 @@ export default function ProficiencyTestPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-24 min-h-screen">
       <div className="flex items-start gap-4 justify-start">
         <div onClick={handleBackToTests} className="h-10 w-10 text-blue-500">
           <ChevronLeft className="h-9 w-9" />
@@ -434,7 +381,6 @@ export default function ProficiencyTestPage() {
             onSelectQuestion={setCurrentQuestionIndex}
             onSubmitTest={handleSubmitTest}
             onShowSkipDialog={() => setShowSkipDialog(true)}
-            timeLeft={timeLeft}
           />
         </div>
 
