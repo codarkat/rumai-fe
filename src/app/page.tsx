@@ -1,16 +1,7 @@
 "use client";
 
 import { Navbar } from "@/components/navigation/Navbar";
-import {
-  Background,
-  CTA,
-  Features,
-  Footer,
-  Hero,
-  LearningPath,
-  Stats,
-  Testimonials,
-} from "@/components/home";
+import { Background, CTA, Features, Footer, Hero } from "@/components/home";
 
 export default function HomePage() {
   return (
@@ -31,20 +22,11 @@ export default function HomePage() {
           <Background />
 
           <div className="relative z-10">
-            {/* Stats Section */}
-            <Stats />
-
             {/* Features Section */}
             <Features />
 
-            {/* Learning Path Section */}
-            <LearningPath />
-
-            {/* Testimonials Section */}
-            <Testimonials />
-
             {/* CTA Section */}
-            <CTA />
+            {/* <CTA /> */}
 
             {/* Footer */}
             <Footer />

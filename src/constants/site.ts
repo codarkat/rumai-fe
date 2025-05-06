@@ -26,10 +26,12 @@ export interface FooterLink {
 export const SITE_CONFIG = {
   name: "RumAI",
   slogan: "Học tiếng Nga mọi lúc, mọi nơi",
-  heroTitle: "Học tiếng Nga hiệu quả và thú vị",
-  heroDescription: "Khám phá phương pháp học tiếng Nga hiện đại, tương tác và phù hợp với mọi trình độ. Bắt đầu hành trình ngôn ngữ của bạn ngay hôm nay!",
-  ctaTitle: "Sẵn sàng bắt đầu hành trình?",
-  ctaDescription: "Đăng ký ngay hôm nay để truy cập đầy đủ các khóa học, tài nguyên và công cụ học tập tiếng Nga.",
-  ctaButtonText: "Bắt đầu miễn phí",
-  featuresTitle: "Tại sao chọn chúng tôi?",
-}; 
+  heroTitle: "Công cụ hỗ trợ học tiếng Nga thông minh",
+  heroDescription:
+    "Trải nghiệm phương pháp học tiếng Nga hiện đại với sự hỗ trợ của AI. Tiện lợi, hiệu quả và phù hợp với mọi nhu cầu học tập.",
+  ctaTitle: "Bắt đầu học ngay hôm nay",
+  ctaDescription:
+    "Sử dụng công cụ hỗ trợ thông minh của chúng tôi để học tiếng Nga nhanh chóng và hiệu quả.",
+  ctaButtonText: "Dùng ngay",
+  featuresTitle: "Công cụ hỗ trợ thông minh",
+};

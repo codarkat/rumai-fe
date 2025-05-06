@@ -11,7 +11,7 @@ export function Features() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <Badge className="mb-4 bg-blue-100 text-blue-700 hover:bg-blue-200 border-transparent">
             <span className="flex h-2 w-2 rounded-full bg-blue-500 mr-1"></span>
-            Tính năng nổi bật
+            Công cụ hỗ trợ
           </Badge>
 
           <h2 className="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-sky-500">
@@ -19,12 +19,12 @@ export function Features() {
           </h2>
 
           <p className="text-lg text-slate-600">
-            Khám phá các tính năng giúp việc học tiếng Nga trở nên dễ dàng và
-            hiệu quả hơn
+            Các công cụ thông minh giúp việc học tiếng Nga trở nên dễ dàng, hiệu
+            quả và thú vị hơn
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {FEATURES.map((feature, index) => {
             const Icon = feature.icon as LucideIcon;
 
