@@ -40,3 +40,16 @@ export interface ProficiencyTestState {
   russianLevel: string;
   lastUpdated: number; // Unix timestamp for when the state was last updated
 }
+
+export interface VocabularyTestState {
+  questions: Question[];
+  testMetadata: TestMetadata | null;
+  currentQuestionIndex: number;
+  answers: Record<number, string | string[]>;
+  textInputs: Record<number, string>;
+  testCompleted: boolean;
+  score: number;
+  correctAnswers: number[];
+  incorrectAnswers: number[];
+  lastUpdated: number; // Unix timestamp for when the state was last updated
+}

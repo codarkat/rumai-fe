@@ -138,7 +138,7 @@ export default function TestsPage() {
           ))}
         </div>
 
-        <div className="mt-12 bg-indigo-50/50 rounded-xl p-6 border border-indigo-100">
+        {/* <div className="mt-12 bg-indigo-50/50 rounded-xl p-6 border border-indigo-100">
           <div className="flex items-start">
             <CircleHelp className="text-indigo-600 mr-4 mt-1" size={24} />
             <div>
@@ -153,7 +153,7 @@ export default function TestsPage() {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
       </motion.div>
     </div>
   );
