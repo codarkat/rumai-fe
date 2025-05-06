@@ -13,7 +13,9 @@
 
   - `page.tsx`: Trang chủ
   - `dictionary`: Từ điển Việt-Nga và Nga-Việt
-  - `personal`: Bảng điều khiển người dùng
+  - `tests`: Các bài kiểm tra từ vựng và trình độ
+  - `documents`: Tài liệu học tập
+  - `assistant`: Trợ lý AI
 
 - `src/app/page.tsx`: Trang chuyển hướng
 
@@ -21,8 +23,8 @@
 
 Middleware (`src/middleware.ts`) sẽ kiểm tra token và chuyển hướng người dùng:
 
-- Nếu không có token và truy cập vào trang được bảo vệ (`/`, `/dictionary`, `/personal`): Chuyển hướng đến `/login`
-- Nếu có token và truy cập vào trang xác thực (`/login`, `/register`): Chuyển hướng đến `/`
+- Nếu không có token và truy cập vào trang được bảo vệ (`/dictionary`, `/tests`, `/documents`, `/assistant`): Chuyển hướng đến `/login`
+- Nếu có token và truy cập vào trang xác thực (`/login`, `/register`): Chuyển hướng đến `/dictionary`
 
 ## Công nghệ sử dụng
 

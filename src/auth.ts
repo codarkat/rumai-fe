@@ -227,9 +227,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       return session;
     },
     async redirect({ url, baseUrl }) {
-      // Chuyển hướng đến trang home của main sau khi đăng nhập thành công
+      // Chuyển hướng đến trang dictionary sau khi đăng nhập thành công
       if (url.startsWith(baseUrl)) {
-        return `${baseUrl}/personal`;
+        return `${baseUrl}/dictionary`;
       }
       // Nếu URL là URL tương đối, thêm baseUrl vào trước
       else if (url.startsWith("/")) {

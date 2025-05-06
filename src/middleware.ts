@@ -15,7 +15,6 @@ export default auth((req) => {
   // Các đường dẫn cần xác thực
   const isProtectedPath =
     path.startsWith("/dictionary") ||
-    path.startsWith("/personal") ||
     path.startsWith("/documents") ||
     path.startsWith("/assistant") ||
     path.startsWith("/tests");
@@ -27,7 +26,7 @@ export default auth((req) => {
   }
 
   if (isAuthenticated && isAuthPath) {
-    return NextResponse.redirect(new URL("/personal", nextUrl));
+    return NextResponse.redirect(new URL("/dictionary", nextUrl));
   }
 
   return NextResponse.next();
@@ -41,7 +40,6 @@ export const config = {
     "/auth/forgot-password",
     "/auth/reset-password",
     "/dictionary/:path*",
-    "/personal/:path*",
     "/documents/:path*",
     "/assistant/:path*",
     "/tests/:path*",

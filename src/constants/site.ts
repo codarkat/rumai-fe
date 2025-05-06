@@ -2,11 +2,10 @@ import { ReactNode } from "react";
 
 // Navigation menu items
 export const NAV_MENU = [
-  { name: "Cá nhân", href: "/personal" },
-  { name: "Khóa học", href: "/courses" },
-  { name: "Bảng chữ cái", href: "/alphabet" },
-  { name: "Tài nguyên", href: "/resources" },
-  { name: "Giới thiệu", href: "/about" },
+  { name: "Từ điển", href: "/dictionary" },
+  { name: "Tài liệu", href: "/documents" },
+  { name: "Trợ lý AI", href: "/assistant" },
+  { name: "Bài kiểm tra", href: "/tests" },
 ];
 
 // Feature type definition

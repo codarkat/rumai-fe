@@ -55,7 +55,7 @@ export function LoginForm() {
           token: accessToken,
           refreshToken: refreshToken,
           redirect: true,
-          callbackUrl: "/personal",
+          callbackUrl: "/dictionary",
         });
       } else {
         setError("Không thể đăng nhập. Vui lòng thử lại sau.");

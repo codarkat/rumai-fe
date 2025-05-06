@@ -55,7 +55,7 @@ export function Hero() {
               size="lg"
               className="bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-700 hover:to-sky-600 text-white"
             >
-              <Link href="/personal">Bắt đầu học</Link>
+              <Link href="/dictionary">Bắt đầu học</Link>
             </Button>
             <Button
               asChild
@@ -167,7 +167,7 @@ export function Hero() {
                   asChild
                   className="w-full bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-700 hover:to-sky-600 text-white"
                 >
-                  <Link href="/personal">Начать сейчас! (Bắt đầu ngay!)</Link>
+                  <Link href="/dictionary">Начать сейчас! (Bắt đầu ngay!)</Link>
                 </Button>
               </CardFooter>
             </Card>

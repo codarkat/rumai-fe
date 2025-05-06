@@ -32,7 +32,7 @@ export function CTA() {
               size="lg"
               className="bg-white text-blue-600 hover:bg-blue-50 hover:text-blue-700"
             >
-              <Link href="/personal">{SITE_CONFIG.ctaButtonText}</Link>
+              <Link href="/dictionary">{SITE_CONFIG.ctaButtonText}</Link>
             </Button>
 
             <Button

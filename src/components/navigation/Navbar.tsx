@@ -309,31 +309,6 @@ export function Navbar() {
                           {session.user.email}
                         </p>
                       </div>
-                      <Link
-                        href="/personal"
-                        className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-sky-50 hover:to-blue-50 hover:text-sky-600 transition-colors duration-200"
-                        onClick={() => setProfileOpen(false)}
-                      >
-                        <User className="h-4 w-4 mr-2" />
-                        Trang cá nhân
-                      </Link>
-                      <Link
-                        href="/personal/history"
-                        className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-sky-50 hover:to-blue-50 hover:text-sky-600 transition-colors duration-200"
-                        onClick={() => setProfileOpen(false)}
-                      >
-                        <History className="h-4 w-4 mr-2" />
-                        Lịch sử học tập
-                      </Link>
-                      <Link
-                        href="/personal/settings"
-                        className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-sky-50 hover:to-blue-50 hover:text-sky-600 transition-colors duration-200"
-                        onClick={() => setProfileOpen(false)}
-                      >
-                        <Settings className="h-4 w-4 mr-2" />
-                        Cài đặt
-                      </Link>
-                      <div className="border-t border-gray-100 my-1"></div>
                       <button
                         onClick={handleLogout}
                         className="flex items-center w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
@@ -508,39 +483,6 @@ export function Navbar() {
                         transition={{ duration: 0.2 }}
                         className="flex flex-col space-y-1 pl-2"
                       >
-                        <Link
-                          href="/personal"
-                          className="flex items-center py-2 text-sm text-gray-700 hover:text-sky-500"
-                          onClick={() => {
-                            setIsOpen(false);
-                            setProfileOpen(false);
-                          }}
-                        >
-                          <User className="h-4 w-4 mr-2" />
-                          Trang cá nhân
-                        </Link>
-                        <Link
-                          href="/personal/history"
-                          className="flex items-center py-2 text-sm text-gray-700 hover:text-sky-500"
-                          onClick={() => {
-                            setIsOpen(false);
-                            setProfileOpen(false);
-                          }}
-                        >
-                          <History className="h-4 w-4 mr-2" />
-                          Lịch sử học tập
-                        </Link>
-                        <Link
-                          href="/personal/settings"
-                          className="flex items-center py-2 text-sm text-gray-700 hover:text-sky-500"
-                          onClick={() => {
-                            setIsOpen(false);
-                            setProfileOpen(false);
-                          }}
-                        >
-                          <Settings className="h-4 w-4 mr-2" />
-                          Cài đặt
-                        </Link>
                         <button
                           onClick={handleLogout}
                           className="flex items-center py-2 text-sm text-red-500 hover:text-red-600"

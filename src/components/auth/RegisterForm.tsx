@@ -53,7 +53,7 @@ export function RegisterForm() {
       setIsLoading(true);
       setError("");
       await authService.register(data);
-      router.push("/personal");
+      router.push("/dictionary");
     } catch (err) {
       setError("Có lỗi xảy ra khi đăng ký. Vui lòng thử lại.");
     } finally {
